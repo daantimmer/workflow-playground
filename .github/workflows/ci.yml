@@ -37,6 +37,7 @@ jobs:
 
   deploy:
       runs-on: ubunut-latest
+      needs: build
 
       steps:
 
