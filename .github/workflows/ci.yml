@@ -23,6 +23,12 @@ jobs:
     steps:
       - run: echo aggregate-builds
 
+      - name: save event name
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          echo $EVENT_NAME
+          echo ${{ github.event_name }}
   test-1:
     needs: [aggregate-builds]
     uses: ./.github/workflows/test.yml
