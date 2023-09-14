@@ -26,5 +26,5 @@ jobs:
     uses: ./.github/workflows/static-analysis.yml
 
   documentation:
-    needs: [ci, static-analysis]
+    needs: [static-analysis]
     uses: ./.github/workflows/documentation.yml
