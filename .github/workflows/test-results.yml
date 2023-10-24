@@ -1,0 +1,19 @@
+---
+name: Process test results
+
+on:
+  workflow_call:
+    inputs:
+      device:
+        description: Device under test
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  process-test-results:
+    runs-on: [ubuntu-latest]
+    steps:
+      - run: echo "result for ${{ inputs.device }}"

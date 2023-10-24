@@ -1,0 +1,24 @@
+---
+name: Test device-x
+
+on:
+  workflow_call:
+    inputs:
+      testTag:
+        description: Test tag
+        required: true
+        type: string
+      deviceName:
+        description: Device name
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  test-device-x:
+    runs-on: [ubunutu-latest]
+    name: Test device-x
+    steps:
+      - run: echo "${{ inputs.deviceName }} | ${{ inputs.testTag }}"

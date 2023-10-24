@@ -1,0 +1,26 @@
+---
+name: ci-pipeline
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    permissions:
+      contents: read
+    secrets: inherit
+    uses: "./.github/workflows/ci.yml"
+
+  documentation:
+    permissions:
+      contents: read
+    secrets: inherit
+    uses: "./.github/workflows/documentation.yml"
