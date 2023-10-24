@@ -1,5 +1,5 @@
 ---
-name: Test device-x
+name: Test device-x ${{ inputs.device }} with ${{ inputs.deviceName }}
 
 on:
   workflow_call:
@@ -15,8 +15,6 @@ on:
 
 permissions:
   contents: read
-
-run-name: testing ${{ inputs.device }} with ${{ inputs.deviceName }}
 
 jobs:
   test-device-x:
