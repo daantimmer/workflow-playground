@@ -23,4 +23,11 @@ jobs:
     runs-on: [ubuntu-latest]
     name: Test device-x ${{ inputs.deviceName }} | ${{ inputs.testTag }}
     steps:
-      - run: echo "${{ inputs.deviceName }} | ${{ inputs.testTag }}"
+      - run: echo "tests ${{ inputs.deviceName }} | ${{ inputs.testTag }}"
+  
+  intermediate-results-x:
+    runs-on: [ubuntu-latest]
+    depends-on: [test-device-x]
+    name: Result device-x ${{ inputs.deviceName }} | ${{ inputs.testTag }}
+    steps:
+      - run: echo "results ${{ inputs.deviceName }} | ${{ inputs.testTag }}"
