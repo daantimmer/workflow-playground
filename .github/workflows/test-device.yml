@@ -27,7 +27,7 @@ jobs:
   
   intermediate-results-x:
     runs-on: [ubuntu-latest]
-    depends-on: [test-device-x]
+    needs: [test-device-x]
     name: Result device-x ${{ inputs.deviceName }} | ${{ inputs.testTag }}
     steps:
       - run: echo "results ${{ inputs.deviceName }} | ${{ inputs.testTag }}"
