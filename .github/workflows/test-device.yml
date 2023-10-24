@@ -21,6 +21,6 @@ run-name: testing ${{ inputs.device }} with ${{ inputs.deviceName }}
 jobs:
   test-device-x:
     runs-on: [ubuntu-latest]
-    name: Test device-x
+    name: Test device-x ${{ inputs.deviceName }} | ${{ inputs.testTag }}
     steps:
       - run: echo "${{ inputs.deviceName }} | ${{ inputs.testTag }}"
