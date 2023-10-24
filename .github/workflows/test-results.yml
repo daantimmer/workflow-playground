@@ -15,5 +15,6 @@ permissions:
 jobs:
   process-test-results:
     runs-on: [ubuntu-latest]
+    name: process test results for ${{ inputs.device }}
     steps:
       - run: echo "result for ${{ inputs.device }}"
