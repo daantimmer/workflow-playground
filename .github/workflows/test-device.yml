@@ -25,9 +25,8 @@ jobs:
     steps:
       - run: echo "tests ${{ inputs.deviceName }} | ${{ inputs.testTag }}"
   
-  intermediate-results-x:
-    runs-on: [ubuntu-latest]
+  test-results:
     needs: [test-device-x]
-    name: Result device-x ${{ inputs.deviceName }} | ${{ inputs.testTag }}
-    steps:
-      - run: echo "results ${{ inputs.deviceName }} | ${{ inputs.testTag }}"
+    uses: ./.github/workflows/test-results.yml
+    with:
+      device: ${{ inputs.device }}
