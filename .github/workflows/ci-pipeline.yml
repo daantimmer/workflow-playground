@@ -1,5 +1,5 @@
 ---
-name: ci-pipeline
+name: ci-pipeline-2
 
 on:
   push:
