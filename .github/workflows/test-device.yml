@@ -16,6 +16,8 @@ on:
 permissions:
   contents: read
 
+run-name: testing ${{ inputs.device }} with ${{ inputs.deviceName }}
+
 jobs:
   test-device-x:
     runs-on: [ubuntu-latest]
