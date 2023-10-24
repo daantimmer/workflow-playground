@@ -29,4 +29,4 @@ jobs:
     needs: [test-device-x]
     uses: ./.github/workflows/test-results.yml
     with:
-      device: ${{ inputs.device }}
+      device: ${{ inputs.deviceName }}
