@@ -19,13 +19,13 @@ inputs:
 outputs:
   passed:
     description: number of passed tests
-    value: ${{ steps.test_summary.passed }}
+    value: ${{ steps.test_summary.outputs.passed }}
   failed:
     description: number of failed tests
-    value: ${{ steps.test_summary.failed }}
+    value: ${{ steps.test_summary.outputs.failed }}
   total:
     description: number of total tests
-    value: ${{ steps.test_summary.total }}
+    value: ${{ steps.test_summary.outputs.total }}
 
 runs:
   using: "composite"
