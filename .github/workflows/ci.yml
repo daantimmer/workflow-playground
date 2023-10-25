@@ -50,7 +50,6 @@ jobs:
       - test-device-a
       - test-device-b
     uses: ./.github/workflows/test-results.yml
-    if: always()
     with:
       device: ${{ matrix.device }}
 
