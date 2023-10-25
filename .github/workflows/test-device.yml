@@ -31,3 +31,9 @@ jobs:
             TEST-BLE-${{ inputs.deviceName }}-${{ inputs.testTag }}.xml
           if-no-files-found: error
           retention-days: 5
+      - uses: ./.github/actions/evaluate-test-results
+        id: test-results
+        with:
+          token: ${{ github.token }}
+          deviceName: TEST-BLE-${{ inputs.deviceName }}-${{ inputs.testTag }}.xml
+          testFile: ${{ inputs.deviceName }}

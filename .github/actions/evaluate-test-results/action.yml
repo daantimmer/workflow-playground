@@ -1,0 +1,53 @@
+---
+name: Get Latest Build Number
+description: This composite gets the latest build number of an action for a give branch.
+# note: warnings will appear using octokit/request-action related to missing functionality from GitHub https://github.com/octokit/request-action/issues/26
+
+inputs:
+  token:
+    description: Github token
+    required: true
+  deviceName:
+    description: deviceName under test
+    required: true
+    type: string
+  testFile:
+    description: generated test output
+    required: true
+    type: string
+
+# outputs:
+#   build_number:
+#     description: Latest build number of an action for a give branch
+#     value: ${{ fromJson(steps.get_build_number.outputs.data).workflow_runs[0].run_number }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Display test summary
+      if: always()
+      uses: test-summary/action@62bc5c68de2a6a0d02039763b8c754569df99e3f # v2.1
+      with:
+        paths: ${{ inputs.testFile }}
+        show: "fail, skip"
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+    - name: Create report for of the test
+      if: always()
+      uses: test-summary/action@62bc5c68de2a6a0d02039763b8c754569df99e3f # v2.1
+      id: test_summary
+      with:
+        paths: ${{ inputs.testFile }}
+        show: all
+        output: ${{ inputs.deviceName }}-test-report.md
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+    - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
+      if: always()
+      with:
+        name: ${{ inputs.deviceName }}-test-report
+        path: ${{ inputs.deviceName }}-test-report.md
+        retention-days: 5
+    - run: echo " ${{ inputs.deviceName }} ${{ steps.test_summary.outputs.passed }}/${{ steps.test_summary.outputs.total }} tests passed"
+    - run: echo "${{ inputs.deviceName }} tests failed, exiting" && exit 1
+      if: ${{ steps.test_summary.outputs.failed != '0' }}
