@@ -54,5 +54,5 @@ runs:
         name: ${{ inputs.deviceName }}-test-report
         path: ${{ inputs.deviceName }}-test-report.md
         retention-days: 5
-      - run: exit 1
-        if: ${{ steps.test_summary.outputs.failed != '0' }}
+    - run: exit 1
+      if: ${{ steps.test_summary.outputs.failed != '0' }}
