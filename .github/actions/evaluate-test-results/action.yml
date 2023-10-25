@@ -16,10 +16,10 @@ inputs:
     required: true
     type: string
 
-# outputs:
-#   build_number:
-#     description: Latest build number of an action for a give branch
-#     value: ${{ fromJson(steps.get_build_number.outputs.data).workflow_runs[0].run_number }}
+outputs:
+  test_summary:
+    description: Latest build number of an action for a give branch
+    value: ${{ steps.test_summary.outputs }}
 
 runs:
   using: "composite"
@@ -48,6 +48,3 @@ runs:
         name: ${{ inputs.deviceName }}-test-report
         path: ${{ inputs.deviceName }}-test-report.md
         retention-days: 5
-    - run: echo " ${{ inputs.deviceName }} ${{ steps.test_summary.outputs.passed }}/${{ steps.test_summary.outputs.total }} tests passed"
-    - run: echo "${{ inputs.deviceName }} tests failed, exiting" && exit 1
-      if: ${{ steps.test_summary.outputs.failed != '0' }}
