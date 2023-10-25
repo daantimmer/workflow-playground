@@ -1,19 +1,20 @@
-<testsuites tests="49" failures="0" disabled="0" time="50.677895">
-  <testsuite tests="5" time="43.742904" errors="0" failures="0" skipped="0" timestamp="2023-10-24 19:30:18Z" name="SpecFlow.GeneratedTests.">
-    <testcase name="SMOKE01" assertions="20" time="7.576690" status="Error" classname="SpecFlow.GeneratedTests.SmokeFeature">
-      <system-out></system-out>
-    </testcase>
-    <testcase name="SMOKE02" assertions="36" time="8.468487" status="Passed" classname="SpecFlow.GeneratedTests.SmokeFeature">
-      <system-out></system-out>
-    </testcase>
-    <testcase name="SMOKE03" assertions="11" time="5.717704" status="Passed" classname="SpecFlow.GeneratedTests.SmokeFeature">
-      <system-out></system-out>
-    </testcase>
-    <testcase name="SMOKE04" assertions="10" time="5.291307" status="Passed" classname="SpecFlow.GeneratedTests.SmokeFeature">
-      <system-out></system-out>
-    </testcase>
-    <testcase name="SMOKE05" assertions="9" time="9.286934" status="Passed" classname="SpecFlow.GeneratedTests.SmokeFeature">
-      <system-out></system-out>
-    </testcase>
-  </testsuite>
-</testsuites>
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite failures="1" errors="0" skipped="0" tests="2" time="348.433096" name="Cellular Data Upload">
+<testcase classname="Cellular Data Upload" name="DataUpload01" time="273.554288">
+  <failure message="failed DataUpload01" type="failed"></failure>
+  <system-out>
+    <![CDATA[]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testcase>
+<testcase classname="Cellular Data Upload" name="DataUpload02" time="74.878809">
+  <system-out>
+    <![CDATA[]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testcase>
+</testsuite>
