@@ -56,3 +56,4 @@ runs:
         retention-days: 5
     - run: exit 1
       if: ${{ steps.test_summary.outputs.failed != '0' }}
+      shell: bash
