@@ -8,34 +8,6 @@ permissions:
   contents: read
 
 jobs:
-  build-test-windows:
-    runs-on: [ubuntu-latest]
-    name: Windows Host Build & Test
-    steps:
-      - run: echo build-and-test windows
-
-  build-test-linux:
-    name: Linux Host Build & Test
-    runs-on: [ubuntu-latest]
-    steps:
-      - run: echo build-and-test linux
-
-  build-embedded:
-    name: Embedded Build
-    strategy:
-      matrix:
-        preset: ["device-a", "device-b",]
-    runs-on: [ubuntu-latest]
-    steps:
-      - run: echo embedded-build ${{ matrix.preset }}
-
-  aggregate-build:
-    name: Aggregate Build Info
-    runs-on: [ubuntu-latest]
-    needs: [build-test-windows, build-test-linux, build-embedded]
-    steps:
-      - run: echo aggregate-build information
-
   test-device-a:
     permissions:
       contents: read
@@ -45,7 +17,6 @@ jobs:
         test:
           - Smoke
           - Startup
-    needs: [aggregate-build]
     uses: ./.github/workflows/test-device.yml
     with:
       testTag: ${{ matrix.test }}
@@ -61,7 +32,6 @@ jobs:
         test:
           - Smoke
           - Startup
-    needs: [aggregate-build]
     uses: ./.github/workflows/test-device.yml
     with:
       testTag: ${{ matrix.test }}
