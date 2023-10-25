@@ -54,7 +54,8 @@ runs:
         name: ${{ inputs.deviceName }}-test-report
         path: ${{ inputs.deviceName }}-test-report.md
         retention-days: 5
-    - uses: actions/github-script@v3
+    - name: set core failed when more than 0 errors
+      uses: actions/github-script@v3
       if: ${{ steps.test-test_summary.outputs.failed != '0' }}
       with:
         script: core.setFailed('tests failed')
