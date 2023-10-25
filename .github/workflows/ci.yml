@@ -43,8 +43,8 @@ jobs:
       fail-fast: false
       matrix:
         test:
-          - test1
-          - test2
+          - Smoke
+          - Startup
     needs: [aggregate-build]
     uses: ./.github/workflows/test-device.yml
     with:
@@ -59,8 +59,8 @@ jobs:
       fail-fast: false
       matrix:
         test:
-          - test1
-          - test2
+          - Smoke
+          - Startup
     needs: [aggregate-build]
     uses: ./.github/workflows/test-device.yml
     with:
