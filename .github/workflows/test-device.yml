@@ -35,8 +35,8 @@ jobs:
         id: test-results
         with:
           token: ${{ github.token }}
-          deviceName: TEST-BLE-${{ inputs.deviceName }}-${{ inputs.testTag }}.xml
-          testFile: ${{ inputs.deviceName }}
+          testFile: TEST-BLE-${{ inputs.deviceName }}-${{ inputs.testTag }}.xml
+          deviceName: ${{ inputs.deviceName }}
     # - run: echo " ${{ inputs.deviceName }} ${{ steps.test_summary.outputs.passed }}/${{ steps.test_summary.outputs.total }} tests passed"
     # - run: echo "${{ inputs.deviceName }} tests failed, exiting" && exit 1
     #   if: ${{ steps.test_summary.outputs.failed != '0' }}
