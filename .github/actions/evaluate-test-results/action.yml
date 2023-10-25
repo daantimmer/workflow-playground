@@ -17,9 +17,15 @@ inputs:
     type: string
 
 outputs:
-  test_summary:
-    description: Latest build number of an action for a give branch
-    value: ${{ steps.test_summary.outputs }}
+  passed:
+    description: number of passed tests
+    value: ${{ steps.test_summary.passed }}
+  failed:
+    description: number of failed tests
+    value: ${{ steps.test_summary.failed }}
+  total:
+    description: number of total tests
+    value: ${{ steps.test_summary.total }}
 
 runs:
   using: "composite"
