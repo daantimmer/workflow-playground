@@ -57,5 +57,4 @@ runs:
     - uses: actions/github-script@v3
       if: ${{ steps.test-test_summary.outputs.failed != '0' }}
       with:
-        script: |
-            core.setFailed('tests failed')
+        script: core.setFailed('tests failed')
