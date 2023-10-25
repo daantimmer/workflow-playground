@@ -16,8 +16,6 @@ on:
 permissions:
   contents: read
 
-run-name: testing ${{ inputs.device }} with ${{ inputs.deviceName }}
-
 jobs:
   test-device-x:
     runs-on: [ubuntu-latest]
@@ -27,8 +25,8 @@ jobs:
       - name: Upload junit xmls
         uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
         with:
-          name: ${{ inputs.device }}-test-xml
+          name: ${{ inputs.deviceName }}-test-xml
           path: |
-            TEST-BLE-${{ inputs.device }}-${{ inputs.testTag }}.xml
+            TEST-BLE-${{ inputs.deviceName }}-${{ inputs.testTag }}.xml
           if-no-files-found: error
           retention-days: 5
