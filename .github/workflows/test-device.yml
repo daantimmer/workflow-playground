@@ -18,8 +18,11 @@ permissions:
 
 jobs:
   test-device-x:
-    runs-on: [ubuntu-latest]
-    name: Test device-x ${{ inputs.deviceName }} | ${{ inputs.testTag }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    name: on ${{ matrix.os }} test device-x ${{ inputs.deviceName }} | ${{ inputs.testTag }}
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - run: echo "tests ${{ inputs.deviceName }} | ${{ inputs.testTag }}"
