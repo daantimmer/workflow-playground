@@ -1,7 +1,8 @@
 ---
-name: ci-pipeline-2
+name: ci
 
 on:
+  pull_request:
   push:
   workflow_dispatch:
 
@@ -13,14 +14,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
-    permissions:
-      contents: read
-    secrets: inherit
-    uses: "./.github/workflows/ci.yml"
-
-  documentation:
-    permissions:
-      contents: read
-    secrets: inherit
-    uses: "./.github/workflows/documentation.yml"
+  cijob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - run: cat readme.md
+      - run: cat contributing.md
