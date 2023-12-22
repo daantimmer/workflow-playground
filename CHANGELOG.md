@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/daantimmer/workflow-playground/compare/v1.0.0...v1.0.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* Added a fix ([708ae8d](https://github.com/daantimmer/workflow-playground/commit/708ae8d40e686937ae3bfe2c68c4beab011a8a64))
+* Fixed target-branch for release please ([d946304](https://github.com/daantimmer/workflow-playground/commit/d946304bf34b2db09d040089ae0e511e596e739f))
+
 ## 1.0.0 (2023-12-22)
 
 
