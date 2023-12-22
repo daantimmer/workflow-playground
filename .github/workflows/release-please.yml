@@ -21,7 +21,7 @@ jobs:
       contents: write
       pull-requests: write
     name: Create Release
-    runs-on: [self-hosted, linux, x64, philips-code-hub, ubuntu-latest]
+    runs-on: ubuntu-latest
     outputs:
       releases_created: ${{ steps.release.outputs.releases_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
@@ -32,6 +32,6 @@ jobs:
   promote-build:
     needs: create-release
     if: ${{ needs.create-release.outputs.releases_created }}
-    runs-on: [self-hosted, linux, x64, philips-code-hub, ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
       - run: echo ${{ needs.create-release.outputs.tag_name }}
