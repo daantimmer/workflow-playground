@@ -1,0 +1,37 @@
+---
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+      - release/*
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+
+jobs:
+  create-release:
+    permissions:
+      contents: write
+      pull-requests: write
+    name: Create Release
+    runs-on: [self-hosted, linux, x64, philips-code-hub, ubuntu-latest]
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: google-github-actions/release-please-action@cc61a07e2da466bebbc19b3a7dd01d6aecb20d1e # v4.0.2
+        id: release
+
+  promote-build:
+    needs: create-release
+    if: ${{ needs.create-release.outputs.releases_created }}
+    runs-on: [self-hosted, linux, x64, philips-code-hub, ubuntu-latest]
+    steps:
+      - run: echo ${{ needs.create-release.outputs.tag_name }}
